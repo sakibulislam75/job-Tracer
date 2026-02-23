@@ -143,6 +143,18 @@ mainContainer.addEventListener("click", function(event) {
             renderInterviewInfo();
         }
         allCount();
+    } else if (btn.closest(".dlt-btn")) {
+
+        let parentNode = btn.closest(".card");
+
+        let comPanyName = parentNode.querySelector('.company-name').innerText;
+
+        interviewList = interviewList.filter(item => item.comPanyName !== comPanyName);
+        rejectList = rejectList.filter(item => item.comPanyName !== comPanyName);
+
+        parentNode.remove();
+
+        allCount();
     }
 
 });
@@ -152,6 +164,24 @@ mainContainer.addEventListener("click", function(event) {
 function renderInterviewInfo() {
 
     filterSection.innerHTML = "";
+    if (interviewList.length === 0) {
+        filterSection.innerHTML = `
+            <div class="flex flex-col items-center justify-center mt-20 gap-4">
+                <img src="jobs.png" alt="No Data" class="w-40 opacity-50">
+                <p class="text-gray-400 text-xl font-medium">No Interview Data Found</p>
+            </div>
+        `;
+        return;
+    }
+    if (interviewList.length === 0) {
+        filterSection.innerHTML = `
+            <div class="flex flex-col items-center justify-center mt-20 gap-4">
+                <img src="no-data.png" alt="No Data" class="w-40 opacity-50">
+                <p class="text-gray-400 text-xl font-medium">No Interview Data Found</p>
+            </div>
+        `;
+        return;
+    }
 
     for (let interview of interviewList) {
 
@@ -218,6 +248,15 @@ function renderInterviewInfo() {
 function renderRejectInfo() {
 
     filterSection.innerHTML = "";
+    if (rejectList.length === 0) {
+        filterSection.innerHTML = `
+            <div class="flex flex-col items-center justify-center mt-20 gap-4">
+                <img src="jobs.png" alt="No Data" class="w-40 opacity-50">
+                <p class="text-gray-400 text-xl font-medium">No Interview Data Found</p>
+            </div>
+        `;
+        return;
+    }
 
     for (let interview of rejectList) {
 
