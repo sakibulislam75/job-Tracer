@@ -7,24 +7,27 @@
     <!-- TailWind+DaisyUi -->
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Document</title>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <title>Job-Tracer</title>
 </head>
 
-<body class="w-[80%] mx-auto mt-5">
+<body class="w-[80%] mx-auto mt-5 ">
 
     <header>
         <div class="">
             <h1 class="text-3xl text-[#002C5C] font-bold my-3">Job Application Tracker</h1>
         </div>
         <div class="conainer  mx-auto grid grid-cols-1 md:grid-cols-3 gap-5 w-full">
-            <div class="card bg-white shadow-md rounded-md text-left pl-8">
+            <div class="card bg-white shadow-sm rounded-md text-left pl-8">
                 <div class="card-body font-bold text-2xl">
                     <h1 class="text-[#323B49]">Total</h1>
                     <h1 id="total"><span class='text-[#002C5C]'>0</span></h1>
 
                 </div>
             </div>
-            <div class="card bg-white shadow-md rounded-md text-left pl-8">
+            <div class="card bg-white shadow-sm rounded-md text-left pl-8">
                 <div class="card-body font-bold text-2xl">
                     <h1 class="text-[#323B49]">Interview</h1>
                     <h1 id="interview-1"><span class='text-green-500'>0</span></h1>
@@ -41,6 +44,360 @@
         </div>
         <hr class="bg-[#E6E7E9] mt-10 mb-6 opacity-10">
     </header>
+
+    <main>
+        <section class="title flex justify-between mb-5">
+            <div class="title">
+                <h1 class="text-3xl text-[#002C5C] font-bold my-3">Available Jobs</h1>
+
+            </div>
+            <div>
+                <p class="text-[#323B49]">
+                    <span id="total">0 </span>Jobs
+                </p>
+            </div>
+            </div>
+        </section>
+        <main>
+            <div class="button mb-5">
+                <button onclick="toggleStyle('all')" id="all" class="btn bg-[#3B82F6] text-white">All</button>
+                <button onclick="toggleStyle('interview-2')" id="interview-2" class="btn bg-base-200 text-[#323B49] ">Interview</button>
+                <button onclick="toggleStyle('reject-2')" id="reject-2" class="btn bg-base-200 text-[#323B49]">Reject</button>
+
+
+            </div>
+            <div id="all-card" class=" grid grid-cols-1 gap-7 mb-10 ">
+                <!-- card-1 -->
+                <div class="card bg-b shadow-sm rounded-md pl-8 w-full">
+                    <div class="  w-full p-5  flex justify-between items-start">
+
+                        <!-- left -->
+                        <div class="p1 space-y-6">
+                            <!-- p1 -->
+                            <div>
+                                <h1 class="text-2xl font-medium company-name">Mobile First Corp</h1>
+                                <p class="text-gray-600 position">React Native Developer</p>
+                            </div>
+                            <!-- p2 -->
+                            <div class="flex gap-1">
+                                <p class="text-gray-600 salary">Remote • Full-time • $130,000 - $175,000</p>
+
+                            </div>
+                            <!-- P3 -->
+                            <div class="space-y-1.5">
+                                <p class="badge badge-outline badge-gray px-5 py-2 sts">Not Applied</p>
+                                <p class="text-gray-600 note description">Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                            </div>
+
+                            <div class="space-x-2 mt-2">
+                                <button class="btn btn-outline btn-success px-5 py-.5 font-semibold hover:text-white" id="interview-3 ">Interview</button>
+                                <button class="btn btn-outline btn-error px-5 py-.5 font-semibold hover:text-white" id='reject-3'>Reject<button>
+                            </div>
+                        </div>
+
+                        <!-- right -->
+                        <div class="p2">
+                            <button class="bg-white rounded-full btn dlt-button"><i
+                                    class="fa-regular fa-trash-can"></i></button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- card-2 -->
+                    <div class="card bg-b shadow-sm rounded-md pl-8 w-full">
+                        <div class="  w-full p-5  flex justify-between items-start">
+
+                            <!-- left -->
+                            <div class="p1 space-y-6">
+                                <!-- p1 -->
+                                <div>
+                                    <h1 class="text-2xl font-medium company-name">TechNova Solutions</h1>
+                                    <p class="text-gray-600 position">Frontend Developer</p>
+                                </div>
+                                <!-- p2 -->
+                                <div class="flex gap-1">
+                                    <p class="text-gray-600 salary">Onsite • Full-time • $90,000 - $120,000</p>
+                                </div>
+                                <!-- P3 -->
+                                <div class="space-y-1.5">
+                                    <p class="badge badge-outline badge-gray px-5 py-2 sts">Not Applied</p>
+                                    <p class="text-gray-600 note description">
+                                        Develop modern and responsive web applications using React and Tailwind CSS. Collaborate with UI/UX designers to build user-friendly interfaces.
+                                    </p>
+                                </div>
+
+                                <div class="space-x-2 mt-2">
+                                    <button class="btn btn-outline btn-success px-6 py-.5 font-semibold hover:text-white" id="interview-3 ">Interview</button>
+                                    <button class="btn btn-outline btn-error px-6 py-.5 font-semibold hover:text-white" id='reject-3'>Reject<button>
+                            </div>
+                        </div>
+
+                        <!-- right -->
+                        <div class="p2">
+                            <button class="bg-white rounded-full btn dlt-button"><i
+                                    class="fa-regular fa-trash-can"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- card-3 -->
+                        <div class="card bg-b shadow-sm rounded-md pl-8 w-full">
+                            <div class="w-full p-5 flex justify-between items-start">
+                                <div class="p1 space-y-6">
+
+                                    <div>
+                                        <h1 class="text-2xl font-medium company-name">Daffodil IT</h1>
+                                        <p class="text-gray-600 position">Junior Web Developer</p>
+                                    </div>
+
+                                    <div>
+                                        <p class="text-gray-600 salary">Onsite • Full-time • BDT 35,000 - 50,000</p>
+                                    </div>
+
+                                    <div class="space-y-1.5">
+                                        <p class="badge badge-outline badge-gray px-5 py-2 sts">Not Applied</p>
+                                        <p class="text-gray-600 note description">
+                                            Build responsive websites using HTML, CSS, JavaScript and assist senior developers.
+                                        </p>
+                                    </div>
+
+                                    <div class="space-x-2 mt-2">
+                                        <button class="btn btn-outline btn-success px-6 font-semibold hover:text-white">
+                                    Interview
+                                </button>
+
+                                        <button class="btn btn-outline btn-error px-6 font-semibold hover:text-white">
+                                    Reject
+                                </button>
+                                    </div>
+
+                                </div>
+
+                                <div class="p2">
+                                    <button class="bg-white rounded-full btn dlt-button">
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- card-4 -->
+
+                        <div class="card bg-b shadow-sm rounded-md pl-8 w-full">
+                            <div class="w-full p-5 flex justify-between items-start">
+
+                                <div class="p1 space-y-6">
+
+                                    <div>
+                                        <h1 class="text-2xl font-medium company-name">BRAC IT</h1>
+                                        <p class="text-gray-600 position">Backend Developer</p>
+                                    </div>
+
+                                    <div>
+                                        <p class="text-gray-600 salary">Hybrid • Full-time • BDT 70,000 - 95,000</p>
+                                    </div>
+
+                                    <div class="space-y-1.5">
+                                        <p class="badge badge-outline badge-gray px-5 py-2 sts">Not Applied</p>
+                                        <p class="text-gray-600 note description">
+                                            Develop secure REST APIs and database logic.
+                                        </p>
+                                    </div>
+
+                                    <div class="space-x-2 mt-2">
+                                        <button class="btn btn-outline btn-success px-6 font-semibold hover:text-white">
+                                    Interview
+                                </button>
+
+                                        <button class="btn btn-outline btn-error px-6 font-semibold hover:text-white">
+                                    Reject
+                                </button>
+                                    </div>
+
+                                </div>
+
+                                <div class="p2">
+                                    <button class="bg-white rounded-full btn dlt-button">
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- card-5 -->
+
+                        <div class="card bg-b shadow-sm rounded-md pl-8 w-full">
+                            <div class="w-full p-5 flex justify-between items-start">
+
+                                <div class="p1 space-y-6">
+
+                                    <div>
+                                        <h1 class="text-2xl font-medium company-name">Tiger IT</h1>
+                                        <p class="text-gray-600 position">Software Engineer</p>
+                                    </div>
+
+                                    <div>
+                                        <p class="text-gray-600 salary">Remote • Full-time • BDT 80,000 - 110,000</p>
+                                    </div>
+
+                                    <div class="space-y-1.5">
+                                        <p class="badge badge-outline badge-gray px-5 py-2 sts">Not Applied</p>
+                                        <p class="text-gray-600 note description">
+                                            Work on security systems and enterprise software development.
+                                        </p>
+                                    </div>
+
+                                    <div class="space-x-2 mt-2">
+                                        <button class="btn btn-outline btn-success px-6 font-semibold hover:text-white">
+                                    Interview
+                                </button>
+
+                                        <button class="btn btn-outline btn-error px-6 font-semibold hover:text-white">
+                                    Reject
+                                </button>
+                                    </div>
+
+                                </div>
+
+                                <div class="p2">
+                                    <button class="bg-white rounded-full btn dlt-button">
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- card-6 -->
+                        <div class="card bg-b shadow-sm rounded-md pl-8 w-full">
+                            <div class="w-full p-5 flex justify-between items-start">
+
+                                <div class="p1 space-y-6">
+
+                                    <div>
+                                        <h1 class="text-2xl font-medium company-name">Techno Next</h1>
+                                        <p class="text-gray-600 position">Full Stack Developer</p>
+                                    </div>
+
+                                    <div>
+                                        <p class="text-gray-600 salary">Onsite • Contract • BDT 75,000 - 100,000</p>
+                                    </div>
+
+                                    <div class="space-y-1.5">
+                                        <p class="badge badge-outline badge-gray px-5 py-2 sts">Not Applied</p>
+                                        <p class="text-gray-600 note description">
+                                            Build scalable modern web applications.
+                                        </p>
+                                    </div>
+
+                                    <div class="space-x-2 mt-2">
+                                        <button class="btn btn-outline btn-success px-6 font-semibold hover:text-white">
+                                    Interview
+                                </button>
+
+                                        <button class="btn btn-outline btn-error px-6 font-semibold hover:text-white">
+                                    Reject
+                                </button>
+                                    </div>
+
+                                </div>
+
+                                <div class="p2">
+                                    <button class="bg-white rounded-full btn dlt-button">
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- card-7 -->
+                        <div class="card bg-b shadow-sm rounded-md pl-8 w-full">
+                            <div class="w-full p-5 flex justify-between items-start">
+
+                                <div class="p1 space-y-6">
+
+                                    <div>
+                                        <h1 class="text-2xl font-medium company-name">City Bank</h1>
+                                        <p class="text-gray-600 position">UI Developer</p>
+                                    </div>
+
+                                    <div>
+                                        <p class="text-gray-600 salary">Hybrid • Full-time • BDT 65,000 - 90,000</p>
+                                    </div>
+
+                                    <div class="space-y-1.5">
+                                        <p class="badge badge-outline badge-gray px-5 py-2 sts">Not Applied</p>
+                                        <p class="text-gray-600 note description">
+                                            Design modern banking user interfaces.
+                                        </p>
+                                    </div>
+
+                                    <div class="space-x-2 mt-2">
+                                        <button class="btn btn-outline btn-success px-6 font-semibold hover:text-white">
+                                    Interview
+                                </button>
+
+                                        <button class="btn btn-outline btn-error px-6 font-semibold hover:text-white">
+                                    Reject
+                                </button>
+                                    </div>
+
+                                </div>
+
+                                <div class="p2">
+                                    <button class="bg-white rounded-full btn dlt-button">
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- card-8 -->
+
+                        <div class="card bg-b shadow-sm rounded-md pl-8 w-full">
+                            <div class="w-full p-5 flex justify-between items-start">
+
+                                <div class="p1 space-y-6">
+
+                                    <div>
+                                        <h1 class="text-2xl font-medium company-name">NRBC Bank</h1>
+                                        <p class="text-gray-600 position">System Engineer</p>
+                                    </div>
+
+                                    <div>
+                                        <p class="text-gray-600 salary">Onsite • Full-time • BDT 85,000 - 115,000</p>
+                                    </div>
+
+                                    <div class="space-y-1.5">
+                                        <p class="badge badge-outline badge-gray px-5 py-2 sts">Not Applied</p>
+                                        <p class="text-gray-600 note description">
+                                            Maintain enterprise banking infrastructure systems.
+                                        </p>
+                                    </div>
+
+                                    <div class="space-x-2 mt-2">
+                                        <button class="btn btn-outline btn-success px-6 font-semibold hover:text-white">
+                                    Interview
+                                </button>
+
+                                        <button class="btn btn-outline btn-error px-6 font-semibold hover:text-white">
+                                    Reject
+                                </button>
+                                    </div>
+
+                                </div>
+
+                                <div class="p2">
+                                    <button class="bg-white rounded-full btn dlt-button">
+                                <i class="fa-regular fa-trash-can"></i>
+                            </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+        </main>
 </body>
 
 </html>
