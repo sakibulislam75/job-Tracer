@@ -13,19 +13,24 @@ let rejectBtn = document.getElementById("reject-2");
 let allCard = document.getElementById("all-card");
 let mainContainer = document.querySelector("main");
 let filterSection = document.getElementById("filter-section");
-let currentSts = 'id';
+let currentSts = 'all';
 
 function allCount() {
-    total.innerText = allCard.children.length;
-    total1.innerText = allCard.children.length;
+    let allTotal = allCard.children.length;
+
+    total.innerText = allTotal;
     interviewCount.innerText = interviewList.length;
     rejectCount.innerText = rejectList.length;
+
+
+
 }
 allCount();
 
 
-// toggle
+//toggle
 function toggleStyle(id) {
+
     currentSts = id;
     all.classList.remove("bg-[#3B82F6]", "text-white");
     interviewBtn.classList.remove("bg-[#3B82F6]", "text-white");
@@ -52,15 +57,20 @@ function toggleStyle(id) {
         allCard.classList.remove('hidden');
         filterSection.classList.add('hidden');
     }
+
+
 }
 
 
+
 mainContainer.addEventListener("click", function(event) {
+
     let btn = event.target;
+
 
     if (btn.classList.contains("btn-success")) {
 
-        let parentNode = event.target.parentNode.parentNode;
+        let parentNode = btn.parentNode.parentNode;
 
         let position = parentNode.querySelector(".position").innerText;
         let comPanyName = parentNode.querySelector(".company-name").innerText;
@@ -88,14 +98,14 @@ mainContainer.addEventListener("click", function(event) {
         if (!nameExist) {
             interviewList.push(cardInfo);
         }
-
-
-        renderInterviewInfo();
+        rejectList = rejectList.filter(
+            item => item.comPanyName !== comPanyName
+        );
+        if (currentSts == 'reject-2') {
+            renderRejectInfo();
+        }
         allCount();
-    }
-
-    // ===== REJECT =====
-    else if (btn.classList.contains("btn-error")) {
+    } else if (btn.classList.contains("btn-error")) {
 
         let parentNode = event.target.parentNode.parentNode;
 
@@ -125,10 +135,16 @@ mainContainer.addEventListener("click", function(event) {
         if (!nameExist) {
             rejectList.push(cardInfo);
         }
+        interviewList = interviewList.filter(
+            item => item.comPanyName !== comPanyName
+        );
 
-        renderRejectInfo();
+        if (currentSts == 'interview-2') {
+            renderInterviewInfo();
+        }
         allCount();
     }
+
 });
 
 
@@ -166,6 +182,72 @@ function renderInterviewInfo() {
 
                 <div class="space-y-1.5">
                     <p class="badge badge-outline badge-success px-5 py-2 sts">
+                        ${interview.sts}
+                    </p>
+                    <p class="text-gray-600 note description">
+                        ${interview.description}
+                    </p>
+                </div>
+
+                <div class="space-x-2 mt-2 flex flex-col gap-2 md:flex-row">
+                    <button class="btn btn-outline btn-success px-5 py-.5 font-semibold hover:text-white">
+                        Interview
+                    </button>
+                    <button class="btn btn-outline btn-error px-5 py-.5 font-semibold hover:text-white">
+                        Reject
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="p2">
+                <button class="bg-white rounded-full btn dlt-button">
+                    <i class="fa-regular fa-trash-can"></i>
+                </button>
+            </div>
+
+        </div>
+        `;
+
+        filterSection.appendChild(div);
+    }
+}
+
+
+// render-reject
+function renderRejectInfo() {
+
+    filterSection.innerHTML = "";
+
+    for (let interview of rejectList) {
+
+        let div = document.createElement("div");
+
+        div.className =
+            "card bg-white shadow-sm rounded-md pl-8 w-full my-5";
+
+        div.innerHTML = `
+        <div class="w-full p-5 flex justify-between items-start">
+
+            <div class="p1 space-y-6">
+
+                <div>
+                    <h1 class="text-2xl font-medium company-name">
+                        ${interview.comPanyName}
+                    </h1>
+                    <p class="text-gray-600 position">
+                        ${interview.position}
+                    </p>
+                </div>
+
+                <div class="flex gap-1">
+                    <p class="text-gray-600 salary">
+                        ${interview.salary}
+                    </p>
+                </div>
+
+                <div class="space-y-1.5">
+                    <p class="badge badge-outline badge-error px-5 py-2 sts">
                         ${interview.sts}
                     </p>
                     <p class="text-gray-600 note description">
