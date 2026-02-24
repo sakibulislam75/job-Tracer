@@ -21,6 +21,13 @@ function allCount() {
     total.innerText = allTotal;
     interviewCount.innerText = interviewList.length;
     rejectCount.innerText = rejectList.length;
+    if (currentSts == 'interview-2') {
+        total1.innerText = interviewList.length + " of " + allTotal;
+    } else if (currentSts == 'reject-2') {
+        total1.innerText = rejectList.length + " of " + allTotal;
+    } else {
+        total1.innerText = allTotal;
+    }
 
 
 
@@ -57,7 +64,7 @@ function toggleStyle(id) {
         allCard.classList.remove('hidden');
         filterSection.classList.add('hidden');
     }
-
+    allCount();
 
 }
 
@@ -252,7 +259,7 @@ function renderRejectInfo() {
         filterSection.innerHTML = `
             <div class="flex flex-col items-center justify-center mt-20 gap-4">
                 <img src="jobs.png" alt="No Data" class="w-40 opacity-50">
-                <p class="text-gray-400 text-xl font-medium">No Interview Data Found</p>
+                <p class="text-gray-400 text-xl font-medium">No Reject Data Found</p>
             </div>
         `;
         return;
